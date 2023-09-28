@@ -1,20 +1,27 @@
 import Link from 'next/link';
+import { prisma } from './db';
 
-export default function Home() {
+export default async function Home() {
+    const todos = await prisma.todo.findMany();
+
     return (
-        <main className="h-screen flex justify-center items-center">
-            <div className="flex flex-col items-center">
-                <h1 className="text-3xl font-bold">Welcome,</h1>
-                <h2>This is my first NextJS 13 Demo Project.</h2>
-                <div className="mt-10">
-                    <Link
-                        href="/login"
-                        className="py-2 px-4 w-fit outline outline-1 outline-slate-500 rounded-sm hover:bg-slate-900 hover:text-slate-50 transition-colors"
-                    >
-                        Login
-                    </Link>
-                </div>
-            </div>
+        <main className="h-screen p-5">
+            <header className="text-white flex justify-between items-center mb-4">
+                <h1 className="text-2xl">Todos</h1>
+                <Link
+                    href="/"
+                    className="outline outline-1 px-2 py-1 rounded-sm hover:bg-slate-100 hover:text-slate-800"
+                >
+                    New
+                </Link>
+            </header>
+            <ul className="pl-4">
+                {todos.map((todo) => (
+                    <li key={todo.id} className="text-white">
+                        {todo.title}
+                    </li>
+                ))}
+            </ul>
         </main>
     );
 }
