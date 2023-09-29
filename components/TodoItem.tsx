@@ -33,7 +33,10 @@ export default function TodoItem({
                 </label>
             </div>
             <div className="flex gap-2.5 items-center">
-                <Link href="/edit" className="text-slate-700 hover:underline">
+                <Link
+                    href={`/edit?id=${id}`}
+                    className="text-slate-700 hover:underline"
+                >
                     Edit
                 </Link>
                 <button className="text-red-400 hover:outline hover:bg-red-400 hover:text-slate-100 py-1 px-2.5 rounded-md">
