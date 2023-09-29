@@ -1,11 +1,25 @@
 import Header from '@/components/Header';
 import Link from 'next/link';
+import { prisma } from '../db';
+import { redirect } from 'next/navigation';
+
+const createTodo = async (data: FormData) => {
+    'use server';
+    const title = data.get('title')?.valueOf();
+    if (typeof title !== 'string' || title.length === 0) {
+        throw new Error('Invalid title');
+    }
+    const newTodo = await prisma.todo.create({
+        data: { title, complete: false },
+    });
+    if (newTodo) redirect('/');
+};
 
 export default function NewTodo() {
     return (
         <div className="p-5 flex flex-col items-center">
             <Header title="New Todo" />
-            <form className="flex flex-col gap-5 w-5/12">
+            <form action={createTodo} className="flex flex-col gap-5 w-5/12">
                 <input
                     type="text"
                     name="title"
