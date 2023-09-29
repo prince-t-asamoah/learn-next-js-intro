@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 interface TodoItemProps {
     id: string;
+    itemNumber: number;
     title: string;
     complete: boolean;
     toggleTodo: (id: string, complete: boolean) => void;
@@ -11,6 +12,7 @@ interface TodoItemProps {
 
 export default function TodoItem({
     id,
+    itemNumber,
     title,
     complete,
     toggleTodo,
@@ -18,6 +20,7 @@ export default function TodoItem({
     return (
         <li className="bg-slate-100 py-2 px-4 flex items-center justify-between gap-2 border-b">
             <div className="flex items-center gap-2">
+                <span>{itemNumber}.</span>
                 <input
                     id={id}
                     type="checkbox"
