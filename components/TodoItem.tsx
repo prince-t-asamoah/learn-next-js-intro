@@ -16,7 +16,7 @@ export default function TodoItem({
     toggleTodo,
 }: TodoItemProps) {
     return (
-        <li className="text-white py-2 flex items-center justify-between gap-2">
+        <li className="text-white bg-slate-100 py-2 px-4 flex items-center justify-between gap-2">
             <div className="flex gap-2">
                 <input
                     id={id}
@@ -32,11 +32,11 @@ export default function TodoItem({
                     {title}
                 </label>
             </div>
-            <div className="flex gap-2 items-center">
-                <Link href="/edit" className="hover:underline">
+            <div className="flex gap-2.5 items-center">
+                <Link href="/edit" className="text-slate-700 hover:underline">
                     Edit
                 </Link>
-                <button className="hover:bg-red-400 p-1 rounded-md">
+                <button className="text-red-400 hover:outline hover:bg-red-400 hover:text-slate-100 py-1 px-2.5 rounded-md">
                     Delete
                 </button>
             </div>
