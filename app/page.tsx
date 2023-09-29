@@ -7,8 +7,8 @@ export default async function Home() {
     const todos = await prisma.todo.findMany();
 
     return (
-        <main className="h-screen p-5">
-            <Header title="New">
+        <main className="p-5">
+            <Header title="All Todos">
                 <Link
                     href="/new"
                     className="outline outline-1 px-2 py-1 rounded-sm hover:bg-slate-100 hover:text-slate-800"
